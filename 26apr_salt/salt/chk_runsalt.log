@@ -1,0 +1,856 @@
+==> default: Running provisioner: salt...
+Copying salt minion config to vm.
+Checking if salt-minion is installed
+salt-minion found
+Checking if salt-call is installed
+salt-call found
+Using Bootstrap Options:  -c /tmp -C
+Salt binaries found. Configuring only.
+stdin: is not a tty
+ *  INFO:  /tmp/bootstrap_salt.sh -- Version 1.5.2
+ *  INFO: System Information:
+ *  INFO:   CPU:          GenuineIntel
+ *  INFO:   CPU Arch:     x86_64
+ *  INFO:   OS Name:      Linux
+ *  INFO:   OS Version:   3.13.0-67-generic
+ *  INFO:   Distribution: Ubuntu 14.04
+
+ *  INFO: Configuring minion
+ *  INFO: Found function install_ubuntu_deps
+ *  INFO: Found function config_salt
+ *  INFO: Found function install_ubuntu_stable
+ *  INFO: Found function install_ubuntu_restart_daemons
+ *  INFO: Found function daemons_running
+ *  INFO: Running config_salt()
+ *  INFO: Running install_ubuntu_restart_daemons()
+salt-minion start/running, process 25826
+salt-minion stop/waiting
+salt-minion start/running, process 26423
+ *  INFO: Running daemons_running()
+ *  INFO: Salt configured
+Salt successfully configured!
+Calling state.highstate... (this may take a while)
+stdin: is not a tty
+[DEBUG   ] Reading configuration from /etc/salt/minion
+[DEBUG   ] Using cached minion ID from /etc/salt/minion_id: stackPhp7
+[DEBUG   ] Configuration file path: /etc/salt/minion
+[DEBUG   ] Reading configuration from /etc/salt/minion
+[DEBUG   ] LazyLoaded jinja.render
+[DEBUG   ] LazyLoaded yaml.render
+[DEBUG   ] LazyLoaded cmd.run
+[DEBUG   ] Jinja search path: ['/srv/pillar']
+[DEBUG   ] Rendered data from file: /srv/pillar/top.sls:
+base:
+  '*':
+      - elasticsearch 
+      - mongodb
+      - percona
+      - php
+
+[DEBUG   ] LazyLoaded config.get
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('base', OrderedDict([('*', ['elasticsearch', 'mongodb', 'percona', 'php'])]))])
+[DEBUG   ] Jinja search path: ['/srv/pillar']
+[DEBUG   ] Rendered data from file: /srv/pillar/elasticsearch.sls:
+elasticsearch:
+  saltfiles: salt://elasticsearch/files
+  url: http://localhost:9200
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('elasticsearch', OrderedDict([('saltfiles', 'salt://elasticsearch/files'), ('url', 'http://localhost:9200')]))])
+[DEBUG   ] Jinja search path: ['/srv/pillar']
+[DEBUG   ] Rendered data from file: /srv/pillar/mongodb.sls:
+mongodb:
+  saltfiles: salt://mongodb/files
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('mongodb', OrderedDict([('saltfiles', 'salt://mongodb/files')]))])
+[DEBUG   ] Jinja search path: ['/srv/pillar']
+[DEBUG   ] Rendered data from file: /srv/pillar/percona.sls:
+percona:
+  passwords:
+    root: edgedev@996
+
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('percona', OrderedDict([('passwords', OrderedDict([('root', 'edgedev@996')]))]))])
+[DEBUG   ] Jinja search path: ['/srv/pillar']
+[DEBUG   ] Rendered data from file: /srv/pillar/php.sls:
+php:
+  enable_xdebug: true
+  enable_opcache: true
+  ext_dir: '/usr/lib/php/20151012'
+  ext_version: '20151012'
+  ext_ini_dir: '/etc/php/7.0/mods-available'
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('php', OrderedDict([('enable_xdebug', True), ('enable_opcache', True), ('ext_dir', '/usr/lib/php/20151012'), ('ext_version', '20151012'), ('ext_ini_dir', '/etc/php/7.0/mods-available')]))])
+[DEBUG   ] LazyLoaded jinja.render
+[DEBUG   ] LazyLoaded yaml.render
+[DEBUG   ] LazyLoaded state.highstate
+[DEBUG   ] LazyLoaded grains.get
+[DEBUG   ] LazyLoaded saltutil.is_running
+[DEBUG   ] LazyLoaded roots.envs
+[DEBUG   ] Could not LazyLoad roots.init
+[DEBUG   ] Updating roots fileserver cache
+[DEBUG   ] Reading configuration from /etc/salt/minion
+[DEBUG   ] LazyLoaded jinja.render
+[DEBUG   ] LazyLoaded yaml.render
+[DEBUG   ] LazyLoaded cmd.run
+[DEBUG   ] Jinja search path: ['/srv/pillar']
+[DEBUG   ] Rendered data from file: /srv/pillar/top.sls:
+base:
+  '*':
+      - elasticsearch 
+      - mongodb
+      - percona
+      - php
+
+[DEBUG   ] LazyLoaded config.get
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('base', OrderedDict([('*', ['elasticsearch', 'mongodb', 'percona', 'php'])]))])
+[DEBUG   ] Jinja search path: ['/srv/pillar']
+[DEBUG   ] Rendered data from file: /srv/pillar/elasticsearch.sls:
+elasticsearch:
+  saltfiles: salt://elasticsearch/files
+  url: http://localhost:9200
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('elasticsearch', OrderedDict([('saltfiles', 'salt://elasticsearch/files'), ('url', 'http://localhost:9200')]))])
+[DEBUG   ] Jinja search path: ['/srv/pillar']
+[DEBUG   ] Rendered data from file: /srv/pillar/mongodb.sls:
+mongodb:
+  saltfiles: salt://mongodb/files
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('mongodb', OrderedDict([('saltfiles', 'salt://mongodb/files')]))])
+[DEBUG   ] Jinja search path: ['/srv/pillar']
+[DEBUG   ] Rendered data from file: /srv/pillar/percona.sls:
+percona:
+  passwords:
+    root: edgedev@996
+
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('percona', OrderedDict([('passwords', OrderedDict([('root', 'edgedev@996')]))]))])
+[DEBUG   ] Jinja search path: ['/srv/pillar']
+[DEBUG   ] Rendered data from file: /srv/pillar/php.sls:
+php:
+  enable_xdebug: true
+  enable_opcache: true
+  ext_dir: '/usr/lib/php/20151012'
+  ext_version: '20151012'
+  ext_ini_dir: '/etc/php/7.0/mods-available'
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('php', OrderedDict([('enable_xdebug', True), ('enable_opcache', True), ('ext_dir', '/usr/lib/php/20151012'), ('ext_version', '20151012'), ('ext_ini_dir', '/etc/php/7.0/mods-available')]))])
+[INFO    ] Loading fresh modules for state activity
+[DEBUG   ] LazyLoaded jinja.render
+[DEBUG   ] LazyLoaded yaml.render
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://top.sls'
+[DEBUG   ] LazyLoaded cmd.run
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/top.sls:
+base:
+  '*':
+      - common
+      - php
+      - java
+      - elasticsearch
+      - mongodb
+      - nginx
+      - percona
+      - oracle-client
+      - composer
+      - oci8
+
+[DEBUG   ] LazyLoaded config.get
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('base', OrderedDict([('*', ['common', 'php', 'java', 'elasticsearch', 'mongodb', 'nginx', 'percona', 'oracle-client', 'composer', 'oci8'])]))])
+[DEBUG   ] LazyLoaded saltutil.sync_all
+[DEBUG   ] Syncing all
+[INFO    ] Creating module dir '/var/cache/salt/minion/extmods/beacons'
+[INFO    ] Syncing beacons for environment 'base'
+[INFO    ] Loading cache from salt://_beacons, for base)
+[DEBUG   ] LazyLoaded cp.cache_dir
+[DEBUG   ] LazyLoaded roots.envs
+[DEBUG   ] Could not LazyLoad roots.init
+[DEBUG   ] Updating roots fileserver cache
+[INFO    ] Caching directory '_beacons/' for environment 'base'
+[DEBUG   ] Local cache dir: '/var/cache/salt/minion/files/base/_beacons'
+[INFO    ] Creating module dir '/var/cache/salt/minion/extmods/modules'
+[INFO    ] Syncing modules for environment 'base'
+[INFO    ] Loading cache from salt://_modules, for base)
+[INFO    ] Caching directory '_modules/' for environment 'base'
+[DEBUG   ] Local cache dir: '/var/cache/salt/minion/files/base/_modules'
+[INFO    ] Creating module dir '/var/cache/salt/minion/extmods/states'
+[INFO    ] Syncing states for environment 'base'
+[INFO    ] Loading cache from salt://_states, for base)
+[INFO    ] Caching directory '_states/' for environment 'base'
+[DEBUG   ] Local cache dir: '/var/cache/salt/minion/files/base/_states'
+[INFO    ] Creating module dir '/var/cache/salt/minion/extmods/grains'
+[INFO    ] Syncing grains for environment 'base'
+[INFO    ] Loading cache from salt://_grains, for base)
+[INFO    ] Caching directory '_grains/' for environment 'base'
+[DEBUG   ] Local cache dir: '/var/cache/salt/minion/files/base/_grains'
+[INFO    ] Creating module dir '/var/cache/salt/minion/extmods/renderers'
+[INFO    ] Syncing renderers for environment 'base'
+[INFO    ] Loading cache from salt://_renderers, for base)
+[INFO    ] Caching directory '_renderers/' for environment 'base'
+[DEBUG   ] Local cache dir: '/var/cache/salt/minion/files/base/_renderers'
+[INFO    ] Creating module dir '/var/cache/salt/minion/extmods/returners'
+[INFO    ] Syncing returners for environment 'base'
+[INFO    ] Loading cache from salt://_returners, for base)
+[INFO    ] Caching directory '_returners/' for environment 'base'
+[DEBUG   ] Local cache dir: '/var/cache/salt/minion/files/base/_returners'
+[INFO    ] Creating module dir '/var/cache/salt/minion/extmods/outputters'
+[INFO    ] Syncing outputters for environment 'base'
+[INFO    ] Loading cache from salt://_outputters, for base)
+[INFO    ] Caching directory '_outputters/' for environment 'base'
+[DEBUG   ] Local cache dir: '/var/cache/salt/minion/files/base/_outputters'
+[INFO    ] Creating module dir '/var/cache/salt/minion/extmods/utils'
+[INFO    ] Syncing utils for environment 'base'
+[INFO    ] Loading cache from salt://_utils, for base)
+[INFO    ] Caching directory '_utils/' for environment 'base'
+[DEBUG   ] Local cache dir: '/var/cache/salt/minion/files/base/_utils'
+[DEBUG   ] Refreshing modules...
+[INFO    ] Loading fresh modules for state activity
+[DEBUG   ] LazyLoaded jinja.render
+[DEBUG   ] LazyLoaded yaml.render
+[DEBUG   ] LazyLoaded saltutil.refresh_modules
+[DEBUG   ] LazyLoaded event.fire
+[DEBUG   ] SaltEvent PUB socket URI: ipc:///var/run/salt/minion/minion_event_93c60f4eb6_pub.ipc
+[DEBUG   ] SaltEvent PULL socket URI: ipc:///var/run/salt/minion/minion_event_93c60f4eb6_pull.ipc
+[DEBUG   ] Sending event - data = {'_stamp': '2016-04-25T13:49:53.537096'}
+[DEBUG   ] Sending event - data = {'_stamp': '2016-04-25T13:49:54.539634'}
+[DEBUG   ] Could not find file from saltenv 'base', 'salt://common.sls'
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache u'salt://common/init.sls'
+[DEBUG   ] LazyLoaded cmd.run
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/common/init.sls:
+include:
+  - common.packages
+
+[DEBUG   ] LazyLoaded config.get
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('include', ['common.packages'])])
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://common/packages.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/common/packages.sls:
+common_packages:
+  pkg.installed:
+    - pkgs:
+      - curl
+      - wget
+      - unzip
+      - build-essential
+      - software-properties-common
+      - python-software-properties
+      - openssh-server
+      - git-core
+      - htop
+      - libxml2-dev
+      - libxslt1-dev
+      - libreadline6-dev
+      - libncurses5-dev
+      - libssl-dev
+      - libaio1
+      - bison
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('common_packages', OrderedDict([('pkg.installed', [OrderedDict([('pkgs', ['curl', 'wget', 'unzip', 'build-essential', 'software-properties-common', 'python-software-properties', 'openssh-server', 'git-core', 'htop', 'libxml2-dev', 'libxslt1-dev', 'libreadline6-dev', 'libncurses5-dev', 'libssl-dev', 'libaio1', 'bison'])])])]))])
+[DEBUG   ] Could not find file from saltenv 'base', 'salt://php.sls'
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache u'salt://php/init.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/php/init.sls:
+php7_ppa:
+  pkgrepo.managed:
+      - ppa: ondrej/php
+# Setup PHP environment
+include:
+  - .dependencies
+  - .install
+  - .config
+  - .extensions
+  - .fpm
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('php7_ppa', OrderedDict([('pkgrepo.managed', [OrderedDict([('ppa', 'ondrej/php')])])])), ('include', ['.dependencies', '.install', '.config', '.extensions', '.fpm'])])
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://php/dependencies.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/php/dependencies.sls:
+#
+# Dependency packages for php extenstions
+#
+
+php-extension-dependencies:
+  pkg.installed:
+    - pkgs:
+      - pkg-config
+      - libmysqlclient18
+      - mysql-common
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('php-extension-dependencies', OrderedDict([('pkg.installed', [OrderedDict([('pkgs', ['pkg-config', 'libmysqlclient18', 'mysql-common'])])])]))])
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://php/install.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/php/install.sls:
+php:
+  pkg.installed:
+    - pkgs:
+      - php7.0
+      - php7.0-dev
+      - php7.0-cli
+      - php7.0-fpm
+      - php7.0-common
+      - php7.0-curl
+      - php7.0-gd
+      - php7.0-gmp
+      - php7.0-intl
+      - php7.0-mcrypt
+      - php7.0-mysql
+      - php7.0-json
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('php', OrderedDict([('pkg.installed', [OrderedDict([('pkgs', ['php7.0', 'php7.0-dev', 'php7.0-cli', 'php7.0-fpm', 'php7.0-common', 'php7.0-curl', 'php7.0-gd', 'php7.0-gmp', 'php7.0-intl', 'php7.0-mcrypt', 'php7.0-mysql', 'php7.0-json'])])])]))])
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://php/config.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/php/config.sls:
+# Set php.ini configuration files
+
+# Web apps (FPM)
+/etc/php/7.0/fpm/php.ini:
+  file.managed:
+    - source: salt://php/files/etc/php/7.0/php.ini
+    - require:
+      - pkg: php
+
+# CLI
+/etc/php/7.0/cli/php.ini:
+  file.managed:
+    - source: salt://php/files/etc/php/7.0/php.ini
+    - require:
+      - pkg: php
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('/etc/php/7.0/fpm/php.ini', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://php/files/etc/php/7.0/php.ini')]), OrderedDict([('require', [OrderedDict([('pkg', 'php')])])])])])), ('/etc/php/7.0/cli/php.ini', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://php/files/etc/php/7.0/php.ini')]), OrderedDict([('require', [OrderedDict([('pkg', 'php')])])])])]))])
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://php/extensions.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] LazyLoaded roots.envs
+[DEBUG   ] Could not LazyLoad roots.init
+[DEBUG   ] Updating roots fileserver cache
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://php/macros/php_module.sls'
+[DEBUG   ] LazyLoaded pillar.get
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/php/extensions.sls:
+# PHP Extensions:
+
+
+##########
+mongodb-beta:
+  pecl.installed
+
+/etc/php/7.0/mods-available/mongo.ini:
+  file.managed:
+    - source: salt://php/files/etc/php/7.0/mods-available/mongo.ini
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pecl: mongodb-beta
+
+
+enable-php-module-mongodb-for-fpm:
+  cmd.run:
+    - name: phpenmod -s fpm mongodb
+    - unless: phpquery -s fpm -m mongodb
+    - require:
+      - file: /etc/php/7.0/mods-available/mongodb.ini
+
+
+
+
+enable-php-module-mongodb-for-cli:
+  cmd.run:
+    - name: phpenmod -s cli mongodb
+    - unless: phpquery -s cli -m mongodb
+    - require:
+      - file: /etc/php/7.0/mods-available/mongodb.ini
+
+
+
+
+
+# If pillar enables xdebug - install and configure it
+
+xdebug:
+  pecl.installed
+
+/etc/php/7.0/mods-available/xdebug.ini:
+  file.managed:
+    - source: salt://php/files/etc/php/7.0/mods-available/xdebug.ini
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pecl: xdebug
+
+
+enable-php-module-xdebug-for-fpm:
+  cmd.run:
+    - name: phpenmod -s fpm xdebug
+    - unless: phpquery -s fpm -m xdebug
+    - require:
+      - file: /etc/php/7.0/mods-available/xdebug.ini
+
+
+
+
+enable-php-module-xdebug-for-cli:
+  cmd.run:
+    - name: phpenmod -s cli xdebug
+    - unless: phpquery -s cli -m xdebug
+    - require:
+      - file: /etc/php/7.0/mods-available/xdebug.ini
+
+
+
+
+
+
+# Configure Zend OpCache extension - no need to install, as it ships with # php5-common package from dotdeb-php56
+/etc/php/7.0/mods-available/opcache.ini:
+  file.managed:
+    - source: salt://php/files/etc/php/7.0/mods-available/opcache.ini
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+
+/etc/php/7.0/cli/conf.d/05-opcache.ini:
+  file.absent
+
+/etc/php/7.0/fpm/conf.d/05-opcache.ini:
+  file.absent
+
+
+
+
+enable-php-module-opcache-for-fpm:
+  cmd.run:
+    - name: phpenmod -s fpm opcache
+    - unless: phpquery -s fpm -m opcache
+    - require:
+      - file: /etc/php/7.0/mods-available/opcache.ini
+
+
+
+
+enable-php-module-opcache-for-cli:
+  cmd.run:
+    - name: phpenmod -s cli opcache
+    - unless: phpquery -s cli -m opcache
+    - require:
+      - file: /etc/php/7.0/mods-available/opcache.ini
+
+
+
+
+
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('mongodb-beta', 'pecl.installed'), ('/etc/php/7.0/mods-available/mongo.ini', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://php/files/etc/php/7.0/mods-available/mongo.ini')]), OrderedDict([('user', 'root')]), OrderedDict([('group', 'root')]), OrderedDict([('mode', 644)]), OrderedDict([('require', [OrderedDict([('pecl', 'mongodb-beta')])])])])])), ('enable-php-module-mongodb-for-fpm', OrderedDict([('cmd.run', [OrderedDict([('name', 'phpenmod -s fpm mongodb')]), OrderedDict([('unless', 'phpquery -s fpm -m mongodb')]), OrderedDict([('require', [OrderedDict([('file', '/etc/php/7.0/mods-available/mongodb.ini')])])])])])), ('enable-php-module-mongodb-for-cli', OrderedDict([('cmd.run', [OrderedDict([('name', 'phpenmod -s cli mongodb')]), OrderedDict([('unless', 'phpquery -s cli -m mongodb')]), OrderedDict([('require', [OrderedDict([('file', '/etc/php/7.0/mods-available/mongodb.ini')])])])])])), ('xdebug', 'pecl.installed'), ('/etc/php/7.0/mods-available/xdebug.ini', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://php/files/etc/php/7.0/mods-available/xdebug.ini')]), OrderedDict([('user', 'root')]), OrderedDict([('group', 'root')]), OrderedDict([('mode', 644)]), OrderedDict([('require', [OrderedDict([('pecl', 'xdebug')])])])])])), ('enable-php-module-xdebug-for-fpm', OrderedDict([('cmd.run', [OrderedDict([('name', 'phpenmod -s fpm xdebug')]), OrderedDict([('unless', 'phpquery -s fpm -m xdebug')]), OrderedDict([('require', [OrderedDict([('file', '/etc/php/7.0/mods-available/xdebug.ini')])])])])])), ('enable-php-module-xdebug-for-cli', OrderedDict([('cmd.run', [OrderedDict([('name', 'phpenmod -s cli xdebug')]), OrderedDict([('unless', 'phpquery -s cli -m xdebug')]), OrderedDict([('require', [OrderedDict([('file', '/etc/php/7.0/mods-available/xdebug.ini')])])])])])), ('/etc/php/7.0/mods-available/opcache.ini', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://php/files/etc/php/7.0/mods-available/opcache.ini')]), OrderedDict([('template', 'jinja')]), OrderedDict([('user', 'root')]), OrderedDict([('group', 'root')]), OrderedDict([('mode', 644)])])])), ('/etc/php/7.0/cli/conf.d/05-opcache.ini', 'file.absent'), ('/etc/php/7.0/fpm/conf.d/05-opcache.ini', 'file.absent'), ('enable-php-module-opcache-for-fpm', OrderedDict([('cmd.run', [OrderedDict([('name', 'phpenmod -s fpm opcache')]), OrderedDict([('unless', 'phpquery -s fpm -m opcache')]), OrderedDict([('require', [OrderedDict([('file', '/etc/php/7.0/mods-available/opcache.ini')])])])])])), ('enable-php-module-opcache-for-cli', OrderedDict([('cmd.run', [OrderedDict([('name', 'phpenmod -s cli opcache')]), OrderedDict([('unless', 'phpquery -s cli -m opcache')]), OrderedDict([('require', [OrderedDict([('file', '/etc/php/7.0/mods-available/opcache.ini')])])])])]))])
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://php/fpm.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/php/fpm.sls:
+# General PHP-FPM configuration
+
+/etc/php/7.0/fpm/php-fpm.conf:
+  file.managed:
+    - source: salt://php/files/etc/php/7.0/fpm/php-fpm.conf
+
+/etc/php/7.0/fpm/pool.d/www.conf:
+  file.managed:
+    - source: salt://php/files/etc/php/7.0/fpm/pool.d/www.conf
+
+# Enable or disable FPM service
+php7.0-fpm:
+  service:
+    - running
+    - enable: True
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('/etc/php/7.0/fpm/php-fpm.conf', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://php/files/etc/php/7.0/fpm/php-fpm.conf')])])])), ('/etc/php/7.0/fpm/pool.d/www.conf', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://php/files/etc/php/7.0/fpm/pool.d/www.conf')])])])), ('php7.0-fpm', OrderedDict([('service', ['running', OrderedDict([('enable', True)])])]))])
+[DEBUG   ] Could not find file from saltenv 'base', 'salt://java.sls'
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache u'salt://java/init.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/java/init.sls:
+/etc/apt/sources.list.d/webupd8team-java.list:
+  file.managed:
+    - source: salt://java/files/webupd8team-java.list
+    - user: root
+    - group: root
+    - mode: 644
+    - require_in:
+      - pkg: oracle-java8-installer
+
+java_key:
+  cmd.run:
+    - name: |
+        apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886
+        apt-get update
+    - unless: dpkg -s oracle-java8-installer 
+    - require_in:
+      - pkg: oracle-java8-installer
+
+java_accept_license:
+  cmd.run:
+    - name: echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+    - unless: dpkg -s oracle-java8-installer 
+    - require_in:
+      - pkg: oracle-java8-installer
+
+oracle-java8-installer:
+  pkg.installed:
+    - pkgs:
+      - oracle-java8-installer
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('/etc/apt/sources.list.d/webupd8team-java.list', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://java/files/webupd8team-java.list')]), OrderedDict([('user', 'root')]), OrderedDict([('group', 'root')]), OrderedDict([('mode', 644)]), OrderedDict([('require_in', [OrderedDict([('pkg', 'oracle-java8-installer')])])])])])), ('java_key', OrderedDict([('cmd.run', [OrderedDict([('name', 'apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886\napt-get update\n')]), OrderedDict([('unless', 'dpkg -s oracle-java8-installer')]), OrderedDict([('require_in', [OrderedDict([('pkg', 'oracle-java8-installer')])])])])])), ('java_accept_license', OrderedDict([('cmd.run', [OrderedDict([('name', 'echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections')]), OrderedDict([('unless', 'dpkg -s oracle-java8-installer')]), OrderedDict([('require_in', [OrderedDict([('pkg', 'oracle-java8-installer')])])])])])), ('oracle-java8-installer', OrderedDict([('pkg.installed', [OrderedDict([('pkgs', ['oracle-java8-installer'])])])]))])
+[DEBUG   ] Could not find file from saltenv 'base', 'salt://elasticsearch.sls'
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache u'salt://elasticsearch/init.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/elasticsearch/init.sls:
+elasticsearch_repo:
+  pkgrepo.managed:
+    - humanname: elasticsearch APT Repo
+    - name: deb http://packages.elasticsearch.org/elasticsearch/1.7/debian stable main
+    - file: /etc/apt/sources.list.d/elasticsearch.list
+    - key_url: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+    - require_in:
+      - pkg: elasticsearch_pkg
+
+/etc/default/elasticsearch:
+  file.managed:
+    - source: salt://elasticsearch/files/elasticsearch.defaults.tmpl
+    - template: jinja
+    - require_in:
+      - pkg: elasticsearch_pkg
+
+/etc/init/elasticsearch.conf:
+  file.absent
+
+
+elasticsearch_pkg:
+  pkg.installed:
+    - pkgs:
+      - elasticsearch
+
+/etc/elasticsearch/elasticsearch.yml:
+  file.managed:
+    - source: salt://elasticsearch/files/elasticsearch.yml.tmpl
+    - template: jinja
+    - mode: 644
+    - user: root
+    - group: root
+    - require_in:
+      - pkg: elasticsearch_pkg
+
+head:
+  cmd.run:
+    - cwd: /usr/share/elasticsearch/bin
+    - name: ./plugin -install mobz/elasticsearch-head
+    - unless: test -d /usr/share/elasticsearch/plugins/head
+    - require:
+      - pkg: elasticsearch_pkg
+
+elasticsearch:
+  service.running:
+    - require:
+      - pkg: elasticsearch_pkg
+    - watch:
+      - file: /etc/default/elasticsearch
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('elasticsearch_repo', OrderedDict([('pkgrepo.managed', [OrderedDict([('humanname', 'elasticsearch APT Repo')]), OrderedDict([('name', 'deb http://packages.elasticsearch.org/elasticsearch/1.7/debian stable main')]), OrderedDict([('file', '/etc/apt/sources.list.d/elasticsearch.list')]), OrderedDict([('key_url', 'http://packages.elasticsearch.org/GPG-KEY-elasticsearch')]), OrderedDict([('require_in', [OrderedDict([('pkg', 'elasticsearch_pkg')])])])])])), ('/etc/default/elasticsearch', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://elasticsearch/files/elasticsearch.defaults.tmpl')]), OrderedDict([('template', 'jinja')]), OrderedDict([('require_in', [OrderedDict([('pkg', 'elasticsearch_pkg')])])])])])), ('/etc/init/elasticsearch.conf', 'file.absent'), ('elasticsearch_pkg', OrderedDict([('pkg.installed', [OrderedDict([('pkgs', ['elasticsearch'])])])])), ('/etc/elasticsearch/elasticsearch.yml', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://elasticsearch/files/elasticsearch.yml.tmpl')]), OrderedDict([('template', 'jinja')]), OrderedDict([('mode', 644)]), OrderedDict([('user', 'root')]), OrderedDict([('group', 'root')]), OrderedDict([('require_in', [OrderedDict([('pkg', 'elasticsearch_pkg')])])])])])), ('head', OrderedDict([('cmd.run', [OrderedDict([('cwd', '/usr/share/elasticsearch/bin')]), OrderedDict([('name', './plugin -install mobz/elasticsearch-head')]), OrderedDict([('unless', 'test -d /usr/share/elasticsearch/plugins/head')]), OrderedDict([('require', [OrderedDict([('pkg', 'elasticsearch_pkg')])])])])])), ('elasticsearch', OrderedDict([('service.running', [OrderedDict([('require', [OrderedDict([('pkg', 'elasticsearch_pkg')])])]), OrderedDict([('watch', [OrderedDict([('file', '/etc/default/elasticsearch')])])])])]))])
+[DEBUG   ] Could not find file from saltenv 'base', 'salt://mongodb.sls'
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache u'salt://mongodb/init.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/mongodb/init.sls:
+mongo_repo:
+  pkgrepo.managed:
+    - humanname: MongoDB 3.2 Repo
+    - name: deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse
+    - file: /etc/apt/sources.list.d/mongodb-3.2.list
+    - keyid: EA312927
+    - keyserver: keyserver.ubuntu.com
+    - require_in:
+      - pkg: mongodb-org
+
+/etc/init/mongo.conf:
+  file.managed:
+    - source: salt://mongodb/files/mongo.init.tmpl
+    - template: jinja
+    - require_in:
+      - pkg: mongodb-org
+
+/etc/mongod.conf:
+  file.managed:
+    - source: salt://mongodb/files/mongod.conf.tmpl
+    - template: jinja
+    - mode: 644
+    - user: root
+    - group: root
+    - require_in:
+      - pkg: mongodb-org
+
+mongodb-org:
+  pkg.installed
+
+mongod:
+  service.running:
+    - require:
+      - pkg: mongodb-org
+    - watch:
+      - file: /etc/mongod.conf
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('mongo_repo', OrderedDict([('pkgrepo.managed', [OrderedDict([('humanname', 'MongoDB 3.2 Repo')]), OrderedDict([('name', 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse')]), OrderedDict([('file', '/etc/apt/sources.list.d/mongodb-3.2.list')]), OrderedDict([('keyid', 'EA312927')]), OrderedDict([('keyserver', 'keyserver.ubuntu.com')]), OrderedDict([('require_in', [OrderedDict([('pkg', 'mongodb-org')])])])])])), ('/etc/init/mongo.conf', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://mongodb/files/mongo.init.tmpl')]), OrderedDict([('template', 'jinja')]), OrderedDict([('require_in', [OrderedDict([('pkg', 'mongodb-org')])])])])])), ('/etc/mongod.conf', OrderedDict([('file.managed', [OrderedDict([('source', 'salt://mongodb/files/mongod.conf.tmpl')]), OrderedDict([('template', 'jinja')]), OrderedDict([('mode', 644)]), OrderedDict([('user', 'root')]), OrderedDict([('group', 'root')]), OrderedDict([('require_in', [OrderedDict([('pkg', 'mongodb-org')])])])])])), ('mongodb-org', 'pkg.installed'), ('mongod', OrderedDict([('service.running', [OrderedDict([('require', [OrderedDict([('pkg', 'mongodb-org')])])]), OrderedDict([('watch', [OrderedDict([('file', '/etc/mongod.conf')])])])])]))])
+[DEBUG   ] Could not find file from saltenv 'base', 'salt://nginx.sls'
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache u'salt://nginx/init.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/nginx/init.sls:
+# Make sure nginx is installed and up
+nginx:
+  pkg:
+    - installed
+  service.running:
+    - require:
+      - pkg: nginx
+      - file: /etc/nginx
+
+
+### CONFIG FILES ###
+
+
+# Configuration files for nginx
+/etc/nginx:
+  file.recurse:
+    - source: salt://nginx/config
+    - user: root
+    - group: root
+    - file_mode: 644
+
+### VHOSTS ###
+
+# symlink the site
+/etc/nginx/sites-enabled/jscore.conf:
+  file.symlink:
+    - target: /etc/nginx/sites-available/jscore.conf
+    - user: www-data
+    - group: www-data
+
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('nginx', OrderedDict([('pkg', ['installed']), ('service.running', [OrderedDict([('require', [OrderedDict([('pkg', 'nginx')]), OrderedDict([('file', '/etc/nginx')])])])])])), ('/etc/nginx', OrderedDict([('file.recurse', [OrderedDict([('source', 'salt://nginx/config')]), OrderedDict([('user', 'root')]), OrderedDict([('group', 'root')]), OrderedDict([('file_mode', 644)])])])), ('/etc/nginx/sites-enabled/jscore.conf', OrderedDict([('file.symlink', [OrderedDict([('target', '/etc/nginx/sites-available/jscore.conf')]), OrderedDict([('user', 'www-data')]), OrderedDict([('group', 'www-data')])])]))])
+[DEBUG   ] Could not find file from saltenv 'base', 'salt://percona.sls'
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache u'salt://percona/init.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/percona/init.sls:
+include:
+  - percona.common
+  - percona.client
+
+percona-server:
+  debconf:
+    - set
+    - name: percona-server-server-5.6
+    - data:
+        'percona-server-server/root_password':
+          type: password
+          value: edgedev@996
+        'percona-server-server/root_password_again':
+          type: password
+          value: edgedev@996
+
+  pkg:
+    - latest
+    - name: percona-server-server-5.6
+    - require:
+      - debconf: percona-server
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('include', ['percona.common', 'percona.client']), ('percona-server', OrderedDict([('debconf', ['set', OrderedDict([('name', 'percona-server-server-5.6')]), OrderedDict([('data', OrderedDict([('percona-server-server/root_password', OrderedDict([('type', 'password'), ('value', 'edgedev@996')])), ('percona-server-server/root_password_again', OrderedDict([('type', 'password'), ('value', 'edgedev@996')]))]))])]), ('pkg', ['latest', OrderedDict([('name', 'percona-server-server-5.6')]), OrderedDict([('require', [OrderedDict([('debconf', 'percona-server')])])])])]))])
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://percona/common.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] LazyLoaded roots.envs
+[DEBUG   ] Could not LazyLoad roots.init
+[DEBUG   ] Updating roots fileserver cache
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://percona/macros.sls'
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/percona/common.sls:
+include:
+  - percona.repo
+
+debconf-utils:
+  pkg.installed
+
+# Import the macros we use
+
+
+
+
+# We need the python libs for the macros
+python-mysqldb:
+  pkg:
+    - installed
+
+mysql:
+  service:
+  - running
+  - require:
+    - pkg: percona-server
+    - pkg: python-mysqldb
+
+########################
+## General Configuration
+/etc/mysql:
+  file:
+    - directory
+    - user: root
+    - group: root
+    - mode: 755
+
+/etc/mysql/my.cnf:
+  file:
+    - managed
+    - source: salt://percona/templates/my.cnf.jinja
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - file: /etc/mysql
+    - require_in:
+      - pkg: percona-server
+
+
+############################
+## Required Users and Grants
+"mysql_user_root_localhost":
+  mysql_user:
+    - present
+    - name: "root"
+    - host: "localhost"
+    - password: "edgedev@996"
+    - connection_unix_socket: /var/run/mysqld/mysqld.sock
+    - connection_user: root
+    - connection_pass: edgedev@996
+    - connection_db: mysql
+    - require:
+      - service: mysql
+"mysql_grants_root_localhost_*.*":
+   mysql_grants:
+    - present
+    - user: "root"
+    - host: "localhost"
+    - database: "*.*"
+    - grant: "ALL PRIVILEGES"
+    - grant_option: True
+    - connection_unix_socket: /var/run/mysqld/mysqld.sock
+    - connection_user: root
+    - connection_pass: edgedev@996
+    - connection_db: mysql
+    - require:
+      - mysql_user: "mysql_user_root_localhost"
+
+####################################
+## Custom Users, Database and Grants
+
+
+
+
+
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('include', ['percona.repo']), ('debconf-utils', 'pkg.installed'), ('python-mysqldb', OrderedDict([('pkg', ['installed'])])), ('mysql', OrderedDict([('service', ['running', OrderedDict([('require', [OrderedDict([('pkg', 'percona-server')]), OrderedDict([('pkg', 'python-mysqldb')])])])])])), ('/etc/mysql', OrderedDict([('file', ['directory', OrderedDict([('user', 'root')]), OrderedDict([('group', 'root')]), OrderedDict([('mode', 755)])])])), ('/etc/mysql/my.cnf', OrderedDict([('file', ['managed', OrderedDict([('source', 'salt://percona/templates/my.cnf.jinja')]), OrderedDict([('template', 'jinja')]), OrderedDict([('user', 'root')]), OrderedDict([('group', 'root')]), OrderedDict([('mode', 644)]), OrderedDict([('require', [OrderedDict([('file', '/etc/mysql')])])]), OrderedDict([('require_in', [OrderedDict([('pkg', 'percona-server')])])])])])), ('mysql_user_root_localhost', OrderedDict([('mysql_user', ['present', OrderedDict([('name', 'root')]), OrderedDict([('host', 'localhost')]), OrderedDict([('password', 'edgedev@996')]), OrderedDict([('connection_unix_socket', '/var/run/mysqld/mysqld.sock')]), OrderedDict([('connection_user', 'root')]), OrderedDict([('connection_pass', 'edgedev@996')]), OrderedDict([('connection_db', 'mysql')]), OrderedDict([('require', [OrderedDict([('service', 'mysql')])])])])])), ('mysql_grants_root_localhost_*.*', OrderedDict([('mysql_grants', ['present', OrderedDict([('user', 'root')]), OrderedDict([('host', 'localhost')]), OrderedDict([('database', '*.*')]), OrderedDict([('grant', 'ALL PRIVILEGES')]), OrderedDict([('grant_option', True)]), OrderedDict([('connection_unix_socket', '/var/run/mysqld/mysqld.sock')]), OrderedDict([('connection_user', 'root')]), OrderedDict([('connection_pass', 'edgedev@996')]), OrderedDict([('connection_db', 'mysql')]), OrderedDict([('require', [OrderedDict([('mysql_user', 'mysql_user_root_localhost')])])])])]))])
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://percona/repo.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/percona/repo.sls:
+#
+percona-repo:
+  pkgrepo:
+    - managed
+    - file: /etc/apt/sources.list.d/percona.list
+    - name: deb http://repo.percona.com/apt trusty main
+    - human_name: Percona Apt Repo
+    - keyid: 1C4CBDCDCD2EFD2A
+    - keyserver: keys.gnupg.net
+    - require_in:
+      - pkg: percona-server
+      - pkg: percona-client
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('percona-repo', OrderedDict([('pkgrepo', ['managed', OrderedDict([('file', '/etc/apt/sources.list.d/percona.list')]), OrderedDict([('name', 'deb http://repo.percona.com/apt trusty main')]), OrderedDict([('human_name', 'Percona Apt Repo')]), OrderedDict([('keyid', '1C4CBDCDCD2EFD2A')]), OrderedDict([('keyserver', 'keys.gnupg.net')]), OrderedDict([('require_in', [OrderedDict([('pkg', 'percona-server')]), OrderedDict([('pkg', 'percona-client')])])])])]))])
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://percona/client.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/percona/client.sls:
+#
+
+percona-client:
+  pkg:
+    - latest
+    - name: percona-server-client-5.6
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('percona-client', OrderedDict([('pkg', ['latest', OrderedDict([('name', 'percona-server-client-5.6')])])]))])
+[DEBUG   ] Could not find file from saltenv 'base', 'salt://oracle-client.sls'
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache u'salt://oracle-client/init.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] LazyLoaded roots.envs
+[DEBUG   ] Could not LazyLoad roots.init
+[DEBUG   ] Updating roots fileserver cache
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache 'salt://oracle-client/map.jinja'
+[DEBUG   ] LazyLoaded grains.filter_by
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/oracle-client/init.sls:
+
+
+
+
+oracle-client:
+  pkg.installed:
+    - sources:
+      - oracle-instantclient11.2-basic: salt://oracle-client/packages/oracle-instantclient11.2-basic_11.2.0.4.0-2_amd64.deb
+      - oracle-instantclient11.2-devel: salt://oracle-client/packages/oracle-instantclient11.2-devel_11.2.0.4.0-2_amd64.deb
+      - oracle-instantclient11.2-sqlplus: salt://oracle-client/packages/oracle-instantclient11.2-sqlplus_11.2.0.4.0-2_amd64.deb
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('oracle-client', OrderedDict([('pkg.installed', [OrderedDict([('sources', [OrderedDict([('oracle-instantclient11.2-basic', 'salt://oracle-client/packages/oracle-instantclient11.2-basic_11.2.0.4.0-2_amd64.deb')]), OrderedDict([('oracle-instantclient11.2-devel', 'salt://oracle-client/packages/oracle-instantclient11.2-devel_11.2.0.4.0-2_amd64.deb')]), OrderedDict([('oracle-instantclient11.2-sqlplus', 'salt://oracle-client/packages/oracle-instantclient11.2-sqlplus_11.2.0.4.0-2_amd64.deb')])])])])]))])
+[DEBUG   ] Could not find file from saltenv 'base', 'salt://composer.sls'
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache u'salt://composer/init.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[DEBUG   ] Rendered data from file: /var/cache/salt/minion/files/base/composer/init.sls:
+get-composer:
+  cmd.run:
+    - cwd: /vagrant
+    - name: 'CURL=`which curl`; $CURL -sS https://getcomposer.org/installer | php'
+    - unless: test -f /usr/local/bin/composer
+
+install-composer:
+  cmd.wait:
+    - name: mv /vagrant/composer.phar /usr/local/bin/composer
+    - cwd: /vagrant
+    - unless: test -f /usr/local/bin/composer
+    - watch:
+      - cmd: get-composer
+
+[DEBUG   ] Results of YAML rendering: 
+OrderedDict([('get-composer', OrderedDict([('cmd.run', [OrderedDict([('cwd', '/vagrant')]), OrderedDict([('name', 'CURL=`which curl`; $CURL -sS https://getcomposer.org/installer | php')]), OrderedDict([('unless', 'test -f /usr/local/bin/composer')])])])), ('install-composer', OrderedDict([('cmd.wait', [OrderedDict([('name', 'mv /vagrant/composer.phar /usr/local/bin/composer')]), OrderedDict([('cwd', '/vagrant')]), OrderedDict([('unless', 'test -f /usr/local/bin/composer')]), OrderedDict([('watch', [OrderedDict([('cmd', 'get-composer')])])])])]))])
+[DEBUG   ] Could not find file from saltenv 'base', 'salt://oci8.sls'
+[INFO    ] Fetching file from saltenv 'base', ** skipped ** latest already in cache u'salt://oci8/init.sls'
+[DEBUG   ] Jinja search path: ['/var/cache/salt/minion/files/base']
+[CRITICAL] Rendering SLS 'base:oci8' failed: Jinja variable 'php' is undefined
+[DEBUG   ] LazyLoaded config.option
+[DEBUG   ] LazyLoaded highstate.output
+local:
+    Data failed to compile:
+----------
+    Rendering SLS 'base:oci8' failed: Jinja variable 'php' is undefined

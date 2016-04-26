@@ -1,0 +1,33 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # Vagrant Box
+  config.vm.box = "trusty64"
+  config.vm.box_url = "http://files.vagrantup.com/trusty64.box"
+  config.vm.synced_folder "salt/roots/", "/srv/salt/"
+  config.vm.synced_folder "salt/pillar/", "/srv/pillar/"
+  config.vm.synced_folder "./wipro_api/", "/home/vagrant/webhosts/wipro_api/"
+
+  config.vm.hostname = "stackPhp7"
+  config.vm.network :public_network, :bridge => 'eth0', :ip => "10.0.0.220"
+
+config.vm.provider :virtualbox do |vb|
+      vb.name = "stackPhp7"
+      vb.customize [
+                   "modifyvm", :id,
+                   "--memory", "4096",
+                   "--cpus", "1"
+                   ]
+  end
+
+
+  # Salt Provisioner
+  config.vm.provision :salt do |salt|
+    # Relative location of configuration file to use for minion
+    # since we need to tell our minion to run in masterless mode
+    salt.minion_config = "salt/minion"
+    salt.run_highstate = true
+    salt.verbose = true
+
+  end
+end

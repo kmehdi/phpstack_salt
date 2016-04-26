@@ -1,0 +1,26 @@
+server {
+    listen 80;
+    server_name jscore.com;
+
+    access_log /var/log/nginx_access.log;
+    error_log /var/log/nginx_error.log;
+
+    location ~ .php$ {
+      fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+      if (!-f $document_root$fastcgi_script_name) {
+        return 404;
+      }
+      fastcgi_pass unix:/var/run/php5-fpm.sock;
+      fastcgi_index index.php;
+      fastcgi_intercept_errors on;
+      include fastcgi_params;
+      root /home/vagrant/webhosts/wipro_api/public;
+    }
+
+    index index.php;
+
+    location / {
+      root  /home/vagrant/webhosts/wipro_api/public;
+    }
+}
+

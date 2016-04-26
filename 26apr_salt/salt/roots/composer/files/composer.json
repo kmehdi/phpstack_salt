@@ -1,0 +1,56 @@
+{
+	"name": "laravel/laravel",
+	"description": "The Laravel Framework.",
+	"keywords": ["framework", "laravel"],
+	"license": "MIT",
+	"require": {
+		"laravel/framework": "4.0.11",
+        "yajra/laravel-oci8": "1.15",
+        "crazycodr/laravel-oci8": "*",
+        "ruflin/elastica": "v1.3.4",
+        "verbalexpressions/php-verbal-expressions":"*",
+        "nesbot/Carbon": "*",
+        "goodby/csv" : "*",
+        "everyman/neo4jphp" : "dev-master",
+        "elasticsearch/elasticsearch": "dev-master",
+        "cbschuld/browser.php": "dev-master",
+        "crodas/influx-php": "dev-master",
+        "pda/pheanstalk": "dev-master",
+        "pafelin/gearman": "0.2.0",
+        "knplabs/gaufrette": "0.2.*@dev",
+        "intouch/laravel-newrelic": "1.0.4",
+        "graylog2/gelf-php": "~1.0",
+        "phpoffice/phpexcel": "dev-master",
+        "guzzle/guzzle": "~3.9",
+        "predis/predis": "dev-master"
+	},
+	"autoload": {
+		"classmap": [
+			"app/commands",
+			"app/controllers",
+			"app/models",
+			"app/libraries",
+			"app/database/migrations",
+			"app/database/seeds",
+			"app/tests/TestCase.php"
+		]
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"php artisan optimize"
+		],
+		"pre-update-cmd": [
+			"php artisan clear-compiled"
+		],
+		"post-update-cmd": [
+			"php artisan optimize"
+		],
+		"post-create-project-cmd": [
+			"php artisan key:generate"
+		]
+	},
+	"config": {
+		"preferred-install": "dist"
+	},
+	"minimum-stability": "dev"
+}

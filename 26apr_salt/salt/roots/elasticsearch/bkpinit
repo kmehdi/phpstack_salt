@@ -1,0 +1,49 @@
+
+elasticsearch_repo:
+  pkgrepo.managed:
+    - humanname: elasticsearch APT Repo
+    - name: deb http://packages.elasticsearch.org/elasticsearch/1.7/debian stable main
+    - file: /etc/apt/sources.list.d/elasticsearch.list
+    - key_url: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+    - require_in:
+      - pkg: elasticsearch_pkg
+
+/etc/default/elasticsearch:
+  file.managed:
+    - source: {{ pillar['elasticsearch']['saltfiles'] }}/elasticsearch.defaults.tmpl
+    - template: jinja
+    - require_in:
+      - pkg: elasticsearch_pkg
+
+/etc/init/elasticsearch.conf:
+  file.absent
+
+elasticsearch_pkg:
+  pkg.installed:
+    - pkgs:
+      - elasticsearch
+
+/etc/elasticsearch/elasticsearch.yml:
+  file.managed:
+    - source: {{ pillar['elasticsearch']['saltfiles'] }}/elasticsearch.yml.tmpl
+    - template: jinja
+    - mode: 644
+    - user: root
+    - group: root
+    - require_in:
+      - pkg: elasticsearch_pkg
+
+head:
+  cmd.run:
+    - cwd: /usr/share/elasticsearch/bin
+    - name: ./plugin -install mobz/elasticsearch-head
+    - unless: test -d /usr/share/elasticsearch/plugins/head
+    - require:
+      - pkg: elasticsearch_pkg
+
+elasticsearch:
+  service.running:
+    - require:
+      - pkg: elasticsearch_pkg
+    - watch:
+      - file: /etc/default/elasticsearch

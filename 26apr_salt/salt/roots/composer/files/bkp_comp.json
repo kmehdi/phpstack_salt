@@ -1,0 +1,7 @@
+{
+    "require": {
+        "phpunit/phpunit": "4.1.*",
+        "phploc/phploc": "*",
+        "squizlabs/php_codesniffer": "*"
+    }
+}

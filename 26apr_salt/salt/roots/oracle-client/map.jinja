@@ -1,0 +1,7 @@
+{% set oracleclient = salt['grains.filter_by']({
+    'Debian': {
+        'basic': 'oracle-instantclient11.2-basic_11.2.0.4.0-2_amd64.deb',
+        'devel': 'oracle-instantclient11.2-devel_11.2.0.4.0-2_amd64.deb',
+        'sqlplus': 'oracle-instantclient11.2-sqlplus_11.2.0.4.0-2_amd64.deb',
+    }
+}, merge=salt['pillar.get']('oracleclient:lookup')) %}

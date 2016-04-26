@@ -1,0 +1,29 @@
+/etc/apt/sources.list.d/webupd8team-java.list:
+  file.managed:
+    - source: salt://java/files/webupd8team-java.list
+    - user: root
+    - group: root
+    - mode: 644
+    - require_in:
+      - pkg: oracle-java8-installer
+
+java_key:
+  cmd.run:
+    - name: |
+        apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886
+        apt-get update
+    - unless: dpkg -s oracle-java8-installer 
+    - require_in:
+      - pkg: oracle-java8-installer
+
+java_accept_license:
+  cmd.run:
+    - name: echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+    - unless: dpkg -s oracle-java8-installer 
+    - require_in:
+      - pkg: oracle-java8-installer
+
+oracle-java8-installer:
+  pkg.installed:
+    - pkgs:
+      - oracle-java8-installer
